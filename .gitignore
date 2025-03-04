@@ -85,6 +85,36 @@ ipython_config.py
 .python-version
 /opt/data/private/zjx/SynGEC-main/iwslt/bin
 /opt/data/private/zjx/SynGEC-main/model
+# 忽略 node_modules 目录（前端项目常见）
+node_modules/
+
+# 忽略 Python 虚拟环境
+venv/
+*.pyc
+__pycache__/
+
+# 忽略 IDE 相关文件
+.vscode/
+.idea/
+
+# 忽略环境变量文件（如包含 API Key）
+.env
+
+# 忽略日志文件
+logs/
+*.log
+
+# 忽略构建产物（如 Java、Vue、React）
+/dist
+/build
+/out
+/target
+
+# 忽略 macOS 生成的隐藏文件
+.DS_Store
+
+# 忽略 Windows 生成的隐藏文件
+Thumbs.db
 
 # pipenv
 #   According to pypa/pipenv#598, it is recommended to include Pipfile.lock in version control.
@@ -131,60 +161,52 @@ dmypy.json
 .pyre/
 iwslt/
 
-output.txt
-output.pkl
-model/english_transformer_syngec/2022/stage1/src/fairseq/clib/libnat_cuda/edit_dist.h
-preprocess
-src/src_syngec/fairseq-0.10.2/docs/
-src/src_syngec/fairseq-0.10.2/fairseq/clib/
-model/english_transformer_syngec/2022/stage1/src/fairseq/clib/
-*.cpp
-model/english_transformer_syngec/2022/stage1/src/fairseq/data/token_block_utils_fast.pyx
-model/english_transformer_syngec/2022/stage1/src/fairseq/modules/cuda_utils.cu
-model/english_transformer_syngec/2022/stage1/src/fairseq/modules/dynamicconv_layer/dynamicconv_cuda_kernel.cu
-model/english_transformer_syngec/2022/stage1/src/fairseq/modules/lightconv_layer/lightconv_cuda.cuh
-model/english_transformer_syngec/2022/stage1/src/fairseq/modules/lightconv_layer/lightconv_cuda_kernel.cu
-model/english_transformer_syngec/2022/stage1/src/fairseq/modules/dynamicconv_layer/dynamicconv_cuda.cuh
-model/gopar/.gitkeep
-pics/scheme.png
-model/syngec/emnlp2022_syngec_english_transformer_baseline.pt
-model/syngec/.gitkeep
-model/syngec/emnlp2022_syngec_english_transformer_syngec.pt
-src/src_gopar/ptb.biaffine.dep.roberta
-src/src_gopar/configs/ctb7.biaffine.dep.electra.ini
-src/src_gopar/ptb.biaffine.dep.roberta.zip
-src/src_gopar/configs/ptb.biaffine.dep.electra.ini
-src/src_syngec/fairseq-0.10.2/fairseq/data/data_utils_fast.pyx
-src/src_syngec/fairseq-0.10.2/fairseq/data/token_block_utils_fast.pyx
-src/src_syngec/fairseq-0.10.2/fairseq/modules/cuda_utils.cu
-src/src_syngec/fairseq-0.10.2/fairseq/modules/dynamicconv_layer/dynamicconv_cuda_kernel.cu
-src/src_syngec/fairseq-0.10.2/fairseq/modules/lightconv_layer/lightconv_cuda_kernel.cu
-src/src_syngec/fairseq-0.10.2/fairseq/modules/dynamicconv_layer/dynamicconv_cuda.cuh
-src/src_syngec/fairseq-0.10.2/fairseq/modules/lightconv_layer/lightconv_cuda.cuh
-src/src_gopar/emnlp2022_syngec_biaffine-dep-electra-en-gopar
-pretrained_weights/
-model/english_transformer_syngec/2022/stage1/src/fairseq/data/data_utils_fast.pyx
-/opt/data/private/zjx/SynGEC-main/preprocess
-/opt/data/private/zjx/SynGEC-main/data-bin
-/opt/data/private/zjx/SynGEC-main/pics
-/opt/data/private/zjx/SynGEC-main/src/src_gopar/ptb.biaffine.dep.roberta
-/opt/data/private/zjx/SynGEC-main/src/src_gopar/ptb.biaffine.dep.roberta.zip
-src/src_syngec/fairseq-0.10.2/fairseq/imputer-pytorch
-/opt/data/private/zjx/SynGEC-main/src/src_syngec/fairseq-0.10.2/fairseq/imputer-pytorch
-/opt/data/private/zjx/SynGEC-main/src/src_syngec/fairseq-0.10.2/fairseq/
-/opt/data/private/zjx/SynGEC-main/src/src_syngec/fairseq-0.10.2/fairseq
-/opt/data/private/zjx/SynGEC-main/bash
-/opt/data/private/zjx/SynGEC-main/src/fairseq
-/opt/data/private/zjx/SynGEC-main/src/src_gopar
-/opt/data/private/zjx/SynGEC-main/src/src_syngec/fairseq-0.10.2/lunanlp
-src/src_syngec/fairseq-0.10.2/lunanlp
 
-
-
-model/english_transformer_syngec/
-
-src/src_syngec/fairseq-0.10.2_/
-
-src/src_syngec/fairseq-0.10.2__/
-*.zip
+/opt/data/private/zjx/data/syngec/requirements1.txt
+/opt/data/private/zjx/data/syngec/res_*
+/opt/data/private/zjx/data/syngec/log
+/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_2_iwslt_ablation
+/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_ablation
+/opt/data/private/zjx/data/syngec/bash/english_exp/iwslt_syntax/log
+/opt/data/private/zjx/data/syngec/bash/english_exp/iwslt_syntax/log/important
+/opt/data/private/zjx/data/syngec/bash/english_exp/iwslt/log
+/opt/data/private/zjx/data/syngec/bash/english_exp/glge
+/opt/data/private/zjx/data/syngec/bash/english_exp/log
+/opt/data/private/zjx/data/syngec/bash/english_exp/raw_iwslt_ablation
+/opt/data/private/zjx/data/syngec/bash/english_exp/bart
+/opt/data/private/zjx/data/syngec/bash/chinese_exp
+/opt/data/private/zjx/data/syngec/bash/english_exp/wmt/log
+/opt/data/private/zjx/data/syngec/log
+/opt/data/private/zjx/data/syngec/log/iwslt_distill
+/opt/data/private/zjx/data/syngec/log/iwslt_raw
+/opt/data/private/zjx/data/syngec/log/wmt
+/opt/data/private/zjx/data/syngec/log/wmt/enro
+/opt/data/private/zjx/data/syngec/model
+/opt/data/private/zjx/data/syngec/res_log
+/opt/data/private/zjx/data/syngec/src/src_gopar
+/opt/data/private/zjx/data/syngec/.vscode
+res_31.log.ref
+.gitignore
 core
+res_31.log.sys
+res_33_bleu.txt
+.gitignore
+res_33.log.sys
+res_33.log.ref
+res_roen60.log.sys
+res_roen60.log.sys
+.vscode/1.py
+.vscode/launch.json
+.gitignore
+bash/english_exp/distill_iwslt_2_iwslt_ablation/
+
+bash/english_exp/distill_iwslt_2_iwslt_ablation/
+
+bash/english_exp/distill_iwslt_ablation/
+bash/english_exp/distill_iwslt_ablation/
+res_roen60.log.sys
+res_roen60.log.sys
+bash/english_exp/raw_iwslt_ablation/
+res_roen60.log.sys
+.vscode/1.py
+/opt/data/private/zjx/data/syngec/src/src_syngec/fairseq-0.10.2/lunanlp

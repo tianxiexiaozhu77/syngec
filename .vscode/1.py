@@ -1,46 +1,5 @@
-                /opt/data/private/zjx/data/iwslt_distill_de_en \
-                -s de \
-                -t en \
-                --arch glat \
-                --noise full_mask \
-                --share-all-embeddings \
-                --criterion glat_loss \
-                --label-smoothing 0.1 \
-                --lr 5e-4 \
-                --warmup-init-lr 1e-7 \
-                --min-lr e-9 \
-                --lr-scheduler inverse_sqrt \
-                --warmup-updates 4000 \
-                --optimizer adam \
-                --adam-betas (0.9, 0.999) \
-                --adam-eps 1e-6 \
-                --task translation_lev_modified \
-                --max-tokens 2048 \ 
-                --update-freq 4 \
-                --weight-decay 0.01 \
-                --dropout 0.3 \
-                --encoder-layers 6 \
-                --encoder-embed-dim 512 \
-                --decoder-layers 6 \
-                --decoder-embed-dim 512 \
-                --fp16 \
-                --max-source-positions 1000 \
-                --max-target-positions 1000 \
-                --max-update 300000 \
-                --seed 0 \
-                --clip-norm 5 \
-                --save-dir /opt/data/private/zjx/ckpt/iwslt_distill_de_en \
-                --src-embedding-copy \
-                --length-loss-factor 0.05 \
-                --log-interval 100 \
-                --eval-bleu \
-                --eval-bleu-args '{"iter_decode_max_iter": 0, "iter_decode_with_beam": 1}' \
-                --eval-tokenized-bleu \
-                --eval-bleu-remove-bpe \
-                --best-checkpoint-metric bleu \
-                --maximize-best-checkpoint-metric \
-                --decoder-learned-pos \
-                --encoder-learned-pos \
-                --apply-bert-init \
-                --activation-fn gelu \
-                --user-dir /opt/data/private/zjx/syngec/src/src_syngec/syngec_model \
+import torch
+x = torch.tensor(3.0, requires_grad=True)
+y = x**2 + 2*x + 1
+y.backward()
+print(x.grad)  

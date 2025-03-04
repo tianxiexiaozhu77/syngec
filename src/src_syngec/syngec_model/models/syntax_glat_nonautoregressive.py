@@ -14,7 +14,7 @@ from fairseq.models.transformer import Embedding
 from fairseq.modules.transformer_sentence_encoder import init_bert_params
 from typing import Any, Dict, List, Optional, Tuple
 from torch import Tensor
-from fairseq.models.fairseq_encoder import GlatEncoderOut, EncoderOut
+from fairseq.models.fairseq_encoder import GlatEncoderOut, EncoderOut, SynEncoderOut
 import sys
 import math
 # module_path = os.path.abspath(os.path.join('../../../../..', 'target_subfolder'))
@@ -269,6 +269,15 @@ class SyntaxGlatNATransformerDecoder(SyntaxFairseqNATDecoder):
         )
         decoder_out = self.output_layer(features)
         return F.log_softmax(decoder_out, -1) if normalize else decoder_out
+    
+        # import json
+        # log_probs = F.log_softmax(decoder_out, -1)
+        # probs = torch.exp(log_probs) 
+        # entropy = -torch.sum(probs * log_probs, dim=-1)
+        # data = {}
+        # data['entropy'] = entropy.tolist()
+        # with open('/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_2_iwslt_ablation/entopy_distill_glat.json', 'w') as f:
+        #     json.dump(data, f, indent=4)
 
     @ensemble_decoder
     def forward_length(self, normalize, encoder_out):
@@ -738,6 +747,52 @@ class SyntaxGlatNATransformerEncoder(FairseqEncoder):
     # def upgrade_state_dict_named(self, state_dict, name):
     #     """Upgrade a (possibly old) state dict for new versions of fairseq."""
     #     return self.sentence_encoder.upgrade_state_dict_named(state_dict, name)
+        # @torch.jit.export
+    def reorder_syn_encoder_out(self, sample: EncoderOut, new_order):
+        """
+        Reorder encoder output according to *new_order*.
+
+        Args:
+            encoder_out: output from the ``forward()`` method
+            new_order (LongTensor): desired order
+
+        Returns:
+            *encoder_out* rearranged according to *new_order*
+        """
+        """
+        Since encoder_padding_mask and encoder_embedding are both of type
+        Optional[Tensor] in EncoderOut, they need to be copied as local
+        variables for Torchscript Optional refinement
+        """
+        
+
+        src_outcoming_arc_mask = sample["net_input"]['src_outcoming_arc_mask'][0]
+        if src_outcoming_arc_mask is not None:
+            new_src_outcoming_arc_mask = src_outcoming_arc_mask.index_select(0, new_order)
+
+        src_incoming_arc_mask = sample["net_input"]['src_incoming_arc_mask'][0]
+        if src_incoming_arc_mask is not None:
+            new_src_incoming_arc_mask = src_incoming_arc_mask.index_select(0, new_order)
+
+        src_dpd_matrix = sample["net_input"]['src_dpd_matrix'][0]
+        if src_dpd_matrix is not None:
+            new_src_dpd_matrix = src_dpd_matrix.index_select(0, new_order)
+
+        src_probs_matrix = sample["net_input"]['src_probs_matrix'][0]
+        if src_probs_matrix is not None:
+            new_src_probs_matrix = src_probs_matrix.index_select(0, new_order)
+
+
+        return SynEncoderOut(
+            src_outcoming_arc_mask=new_src_outcoming_arc_mask,  # T x B x C
+            src_incoming_arc_mask=new_src_incoming_arc_mask,  # B x T
+            src_dpd_matrix=new_src_dpd_matrix,  # B x T x C
+            src_probs_matrix=new_src_probs_matrix,
+            # length_out=new_length_out,
+            # encoder_states=encoder_states,  # List[T x B x C]
+            # src_tokens=src_tokens,  # B x T
+            # src_lengths=src_lengths,  # B x 1
+        )
 
 
 class SyntaxGlatSentenceNATransformerEncoder(FairseqEncoder):  # sentence encoder

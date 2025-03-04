@@ -1,6 +1,6 @@
 source activate syndecoder
 export CUDA_VISIBLE_DEVICES=1  # 只有一个可见
-save_path="/opt/data/private/zjx/ckpt/iwslt_distill_de_en_syntax/4"
+save_path="/opt/data/private/zjx/ckpt/iwslt_distill_de_en_syntax/6"
 # data_dir="/opt/data/private/friends/tzc/data/iwslt_de/iwslt_de/bin"  # raw
 # data_dir="/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin"  # 字典10104 distill
 data_dir="/opt/data/private/zjx/data/fairseq_iwslt14.tokenized.distil.de-en/bin"  # 字典10152 distill
@@ -16,9 +16,11 @@ nohup fairseq-train  \
     --only-gnn \
     --syntax-encoder GCN \
     --ddp-backend=no_c10d \
+    # --task syntax-glat-src-task \
     --task syntax-glat-task \
     --criterion syntax_glat_loss \
-    --arch syntax_glat_iwslt \
+    --arch syntax_glat \
+    # --arch syntax_glat_src_iwslt \
     --noise full_mask \
     --share-all-embeddings \
     --optimizer adam  \
@@ -35,7 +37,6 @@ nohup fairseq-train  \
     --fixed-validation-seed 7 \
     --max-tokens 2048 \
     --update-freq 4 \
-    --fp16 \
     --max-update 500000 \
     --eval-bleu --eval-bleu-args '{"iter_decode_max_iter": 0, "iter_decode_with_beam": 1}' \
     --eval-tokenized-bleu --eval-bleu-remove-bpe --best-checkpoint-metric bleu \
@@ -49,6 +50,8 @@ nohup fairseq-train  \
     --seed 0 \
     > /opt/data/private/zjx/syngec/bash/english_exp/iwslt_syntax/log/$(date -d "today" +"%Y.%m.%d_syntax_glat_iwslt_distill_de_en").log 2>&1 &
 # tail -f /opt/data/private/friends/tzc/SynGEC-main/src/src_syngec/syngec_model/$(date -d "today" +"%Y.%m.%d_syntax_glat_de_en_46").log
+    # --fp16 \
+
 
 
 

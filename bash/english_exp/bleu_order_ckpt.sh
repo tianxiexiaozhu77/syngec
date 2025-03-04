@@ -1,7 +1,15 @@
-source activate syndecoder
-python /opt/data/private/zjx/syngec/src/src_syngec/fairseq-0.10.2/scripts/bleu_order_ckpt.py \
---log_path /opt/data/private/zjx/syngec/bash/english_exp/iwslt_syntax/log/2024.08.09_syntax_glat_iwslt_distill_de_en.log \
+source activate syngec
+python /opt/data/private/zjx/data/syngec/src/src_syngec/fairseq-0.10.2/scripts/bleu_order_ckpt.py \
+--log_path /opt/data/private/zjx/data/syngec/bash/english_exp/iwslt_ablation/log/2025.02.25_glat_raw_de_en_save1.log \
 
+
+# 1.checkpoint475.pt checkpoint474.pt checkpoint463.pt checkpoint477.pt checkpoint466.pt
+# 2.checkpoint498.pt checkpoint493.pt checkpoint464.pt checkpoint462.pt checkpoint494.pt
+# 3.checkpoint463.pt checkpoint473.pt checkpoint459.pt checkpoint461.pt checkpoint434.pt
+# 4.checkpoint499.pt checkpoint504.pt checkpoint491.pt checkpoint490.pt checkpoint498.pt
+# 5.checkpoint288.pt checkpoint220.pt checkpoint302.pt checkpoint294.pt checkpoint300.pt # 有问题没跑完
+# 6. checkpoint492.pt checkpoint448.pt checkpoint475.pt checkpoint487.pt checkpoint449.pt
+# 2025.02.25_glat_raw_de_en_save1 checkpoint98.pt checkpoint96.pt checkpoint142.pt checkpoint94.pt checkpoint150.pt
 # best_order       epoch           bleu            best_bleu 
 # ——————————————————————————————————————————————————————
 # 1                458             30.98           30.98     

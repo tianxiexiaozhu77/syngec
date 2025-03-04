@@ -263,7 +263,8 @@ class SyntaxEnhancedTransformerModel(FairseqEncoderDecoderModel):
                     )
 
         encoder = cls.build_encoder(args, src_dict, encoder_embed_tokens, syntax_label_dict=syntax_label_dict, embed_rels=syntax_label_embed_tokens)  # , syntax_label_dict=syntax_label_dict, embed_rels=syntax_label_embed_tokens
-        decoder = cls.build_decoder(args, tgt_dict, decoder_embed_tokens) #, syntax_label_dict=syntax_label_dict, embed_rels=syntax_label_embed_tokens)
+        # decoder = cls.build_decoder(args, tgt_dict, decoder_embed_tokens, syntax_label_dict=syntax_label_dict, embed_rels=syntax_label_embed_tokens)#, syntax_label_dict=syntax_label_dict, embed_rels=syntax_label_embed_tokens)
+        decoder = cls.build_decoder(args, tgt_dict, decoder_embed_tokens)
         if getattr(args, "freeze_bart_parameters", False):  # 如果冻结bart的参数
             for name, param in encoder.named_parameters():
                 if "sentence_encoder" in name:

@@ -81,6 +81,14 @@ def _main(args, output_file):
         src_dict = None
     tgt_dict = task.target_dictionary
 
+
+    # ##########写入文件##########
+    # output_file = "/opt/data/private/zjx/data/iwslt_distill_de_en/token_indices.txt"
+    # with open(output_file, "w", encoding="utf-8") as f:
+    #     for token, index in tgt_dict.indices.items():
+    #         f.write(f"{token} {index}\n")
+    ####################
+
     overrides = ast.literal_eval(args.model_overrides)
 
     # Load ensemble
@@ -188,6 +196,7 @@ def _main(args, output_file):
             constraints = sample["constraints"]
 
         gen_timer.start()
+
         hypos = task.inference_step(
             generator,
             models,

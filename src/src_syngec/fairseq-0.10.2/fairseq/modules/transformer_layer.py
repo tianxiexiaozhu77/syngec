@@ -590,16 +590,16 @@ class GCNSyntaxGuidedTransformerEncoderLayer(nn.Module):
         if self.syntax_type == "dep":  # 依存句法需要考虑标签，同时考虑父亲节点和孩子节点
             
             
-            #################有src_incoming_arc_x--⬇---####################
-            # 对应论文式(2)
-            U_in = torch.cat((h, src_incoming_arc_x), -1)  # B x T x T x 2D  torch.Size([48, 35, 35, 1024])
-            U_in = self.W_in(U_in)  # B x T x T x D   torch.Size([48, 35, 35, 512])
-            # U_in = self.W_in(h)  # B x T x T x D
-            U_in = self.activation_fn(U_in)   # torch.Size([48, 35, 35, 512])
-            U_in = self.activation_dropout_module(U_in)  # B x T x T x D   torch.Size([48, 35, 35, 512])
-            # h = (U_in + U_out).sum(dim=2).transpose(0, 1)  # T x B x D  # torch.Size([35, 48, 512])
-            h = U_in.sum(dim=2).transpose(0, 1)
-            #################有src_incoming_arc_x--⬆---####################
+            # #################有src_incoming_arc_x--⬇---####################
+            # # 对应论文式(2)
+            # U_in = torch.cat((h, src_incoming_arc_x), -1)  # B x T x T x 2D  torch.Size([48, 35, 35, 1024])
+            # U_in = self.W_in(U_in)  # B x T x T x D   torch.Size([48, 35, 35, 512])
+            # # U_in = self.W_in(h)  # B x T x T x D
+            # U_in = self.activation_fn(U_in)   # torch.Size([48, 35, 35, 512])
+            # U_in = self.activation_dropout_module(U_in)  # B x T x T x D   torch.Size([48, 35, 35, 512])
+            # # h = (U_in + U_out).sum(dim=2).transpose(0, 1)  # T x B x D  # torch.Size([35, 48, 512])
+            # h = U_in.sum(dim=2).transpose(0, 1)
+            # #################有src_incoming_arc_x--⬆---####################
 
 
             # #################有src_outcoming_arc--⬇---####################
@@ -612,26 +612,26 @@ class GCNSyntaxGuidedTransformerEncoderLayer(nn.Module):
             # h = U_out.sum(dim=2).transpose(0, 1)  # T x B x D  # torch.Size([35, 48, 512])
             # #################src_outcoming_arc--⬆---####################
 
-            # #################有src_incoming_arc_x和src_outcoming_arc和src_probs_matrix--⬇---####################
-            # # 对应论文式(1)
-            # U_out = torch.cat((h, src_outcoming_arc_x), -1)  # B x T x T x 2D
-            # U_out = self.W_out(U_out)  # B x T x T x D
-            # # U_out = self.W_out(h)  # B x T x T x D
-            # U_out = self.activation_fn(U_out)
-            # U_out = self.activation_dropout_module(U_out)  # B x T x T x D
+            #################有src_incoming_arc_x和src_outcoming_arc和src_probs_matrix--⬇---####################
+            # 对应论文式(1)
+            U_out = torch.cat((h, src_outcoming_arc_x), -1)  # B x T x T x 2D
+            U_out = self.W_out(U_out)  # B x T x T x D
+            # U_out = self.W_out(h)  # B x T x T x D
+            U_out = self.activation_fn(U_out)
+            U_out = self.activation_dropout_module(U_out)  # B x T x T x D
 
-            # # 对应论文式(2)
-            # U_in = torch.cat((h, src_incoming_arc_x), -1)  # B x T x T x 2D
-            # U_in = self.W_in(U_in)  # B x T x T x D
-            # # U_in = self.W_in(h)  # B x T x T x D
-            # U_in = self.activation_fn(U_in)
-            # U_in = self.activation_dropout_module(U_in)  # B x T x T x D
-            # src_probs_matrix = src_probs_matrix.unsqueeze(-1)
+            # 对应论文式(2)
+            U_in = torch.cat((h, src_incoming_arc_x), -1)  # B x T x T x 2D
+            U_in = self.W_in(U_in)  # B x T x T x D
+            # U_in = self.W_in(h)  # B x T x T x D
+            U_in = self.activation_fn(U_in)
+            U_in = self.activation_dropout_module(U_in)  # B x T x T x D
+            src_probs_matrix = src_probs_matrix.unsqueeze(-1)
 
-            # U_in = torch.mul(src_probs_matrix, U_in)
-            # U_out = torch.mul(src_probs_matrix.transpose(1,2), U_out)
-            # h = (U_in + U_out).sum(dim=2).transpose(0, 1)  # T x B x D
-            # #################有src_incoming_arc_x和src_outcoming_arc和src_probs_matrix--⬆---####################
+            U_in = torch.mul(src_probs_matrix, U_in)
+            U_out = torch.mul(src_probs_matrix.transpose(1,2), U_out)
+            h = (U_in + U_out).sum(dim=2).transpose(0, 1)  # T x B x D
+            #################有src_incoming_arc_x和src_outcoming_arc和src_probs_matrix--⬆---####################
         else:
             src_probs_matrix = src_probs_matrix.unsqueeze(-1)
             U_in = self.W_in(h)  # B x T x T x D

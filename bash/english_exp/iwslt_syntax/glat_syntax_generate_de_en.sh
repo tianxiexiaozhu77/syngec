@@ -1,5 +1,5 @@
-source activate syndecoder
-export CUDA_VISIBLE_DEVICES=3
+source activate syngec
+export CUDA_VISIBLE_DEVICES=0
 # export CUDA_LAUNCH_BLOCKING=1
 # data_dir=/opt/data/private/friends/tzc/data/iwslt_de/iwslt_de/bin
 # data_dir=/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin  # 字典10104 distill data
@@ -7,7 +7,7 @@ data_dir=/opt/data/private/zjx/data/fairseq_iwslt14.tokenized.distil.de-en/bin  
 checkpoint_path=/opt/data/private/zjx/ckpt/iwslt_distill_de_en_syntax/4/checkpoint_ave.pt
 src=de
 tgt=en
-python /opt/data/private/zjx/syngec/src/src_syngec/fairseq-0.10.2/fairseq_cli/generate.py \
+python /opt/data/private/zjx/data/syngec/src/src_syngec/fairseq-0.10.2/fairseq_cli/generate.py \
     ${data_dir} -s ${src} -t ${tgt} \
     --path ${checkpoint_path} --iter-decode-force-max-iter \
     --task syntax-glat-task --gen-subset test \
@@ -15,7 +15,7 @@ python /opt/data/private/zjx/syngec/src/src_syngec/fairseq-0.10.2/fairseq_cli/ge
     --batch-size 1 --iter-decode-with-beam 5 \
     --use-syntax \
     --syntax-encoder GCN \
-    --user-dir /opt/data/private/zjx/syngec/src/src_syngec/syngec_model \
+    --user-dir /opt/data/private/zjx/data/syngec/src/src_syngec/syngec_model \
     --remove-bpe \
     --quiet \
 

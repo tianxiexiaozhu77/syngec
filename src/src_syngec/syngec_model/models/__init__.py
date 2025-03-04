@@ -21,4 +21,5 @@ from . import (
     # glat_ctc as _,
     # syntax_glat_ctc as _,
     syntax_glat_decoder_input as _,
+    syntax_glat_src as _,
 )

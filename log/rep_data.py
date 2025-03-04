@@ -77,8 +77,10 @@ if __name__ == '__main__':
     # remove_repeat_n_gram("/opt/data/private/zjx/SynGEC-main/log/iwslt_distill/glat_syntax_distll_iwslt_deen.log")
 
 
-    # remove_repeat_n_gram("/opt/data/private/zjx/SynGEC-main/log/iwslt_raw/glat_raw_deen.log")
-    remove_repeat_n_gram("/opt/data/private/zjx/SynGEC-main/log/iwslt_raw/glat_syntax_raw_deen.log")
+    # remove_repeat_n_gram("/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_ablation/log/iwslt_distill_de_en_31.55/iwslt_distill_de_en_31.55.log")
+    # remove_repeat_n_gram("/opt/data/private/zjx/data/syngec/bash/english_exp/iwslt_ablation/raw_iwslt_deen_2852.log")
+    remove_repeat_n_gram("/opt/data/private/zjx/data/syngec/bash/english_exp/iwslt_ablation/glat/raw_iwslt_deen_27.83.log")
+    # remove_repeat_n_gram("/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_ablation/log/iwslt_distill_de_en_33/iwslt_distill_de_en_33.log")
     # reorder_res()
 
     # /opt/data/private/zjx/SynGEC-main/log/enro/glat_ctc_syntax_enro.log

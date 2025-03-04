@@ -7,4 +7,5 @@ from . import (
     # syntax_guided_dslp_task as _, # dslp+ctc+mixtrain+syntax的task
     translation_glat as _,
     translation_dslp_glat_syntax as _,
+    syntax_glat_src_task as _,
 )
