@@ -209,4 +209,4 @@ res_roen60.log.sys
 bash/english_exp/raw_iwslt_ablation/
 res_roen60.log.sys
 .vscode/1.py
-/opt/data/private/zjx/data/syngec/src/src_syngec/fairseq-0.10.2/lunanlp
+/opt/data/private/zjx/data/syngec/src/src_syngec/fairseq-0.10.2/lunanlp*.log
