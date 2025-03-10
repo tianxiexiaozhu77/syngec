@@ -13,7 +13,7 @@ CUDA_VISIBLE_DEVICES=0,1,2,3 python /opt/data/private/zjx/SynGEC-main/src/src_sy
     --path ${checkpoint_path} --iter-decode-force-max-iter \
     --task syntax-glat-task --gen-subset test \
     --iter-decode-max-iter 0 --iter-decode-eos-penalty 0 \
-    --batch-size 1 --iter-decode-with-beam 1 \
+    --batch-size 1 --iter-decode-with-beam 5 \
     --use-syntax \
     --syntax-encoder GCN \
     --user-dir /opt/data/private/zjx/SynGEC-main/src/src_syngec/syngec_model \

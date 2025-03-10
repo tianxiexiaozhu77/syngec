@@ -212,3 +212,10 @@ res_roen60.log.sys
 /opt/data/private/zjx/data/syngec/src/src_syngec/fairseq-0.10.2/lunanlp*.log
 /opt/data/private/zjx/data/syngec/.vscode
 .vscode/
+bash/chinese_exp
+log/
+model/
+res_log/
+src/src_gopar/
+src/src_syngec/fairseq-0.10.2_/
+src/src_syngec/fairseq-0.10.2__/

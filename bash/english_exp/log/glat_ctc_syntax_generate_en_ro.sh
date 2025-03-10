@@ -22,7 +22,7 @@ bash /opt/data/private/zjx/SynGEC-main/src/src_syngec/fairseq-0.10.2/scripts/com
 
 # 需要改4个地方
 # 1. checkpoint_path指定的路径
-# 2. --iter-decode-with-beam 3
+# 2. --iter-decode-with-beam 5
 # 3. --task translation_lev_modified
 # 4. 激活哪个环境source activate syngec
 # 5. 迭代强化生成

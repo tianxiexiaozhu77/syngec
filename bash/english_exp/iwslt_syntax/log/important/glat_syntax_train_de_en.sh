@@ -2,8 +2,8 @@ source activate syndecoder
 export CUDA_VISIBLE_DEVICES=0  # 只有一个可见
 save_path="/opt/data/private/zjx/ckpt/iwslt_distill_de_en_syntax/7"
 # data_dir="/opt/data/private/friends/tzc/data/iwslt_de/iwslt_de/bin"  # raw
-# data_dir="/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin"  # 字典10104 distill
-data_dir="/opt/data/private/zjx/data/fairseq_iwslt14.tokenized.distil.de-en/bin"  # 字典10152 distill
+# data_dir="/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin"  # 
+data_dir="/opt/data/private/zjx/data/fairseq_iwslt14.tokenized.distil.de-en/bin"  # 
 user_dir="/opt/data/private/zjx/syngec/src/src_syngec/syngec_model"
 touch /opt/data/private/zjx/syngec/bash/english_exp/iwslt_syntax/log/$(date -d "today" +"%Y.%m.%d_syntax_glat_iwslt_distill_de_en").log
 nohup fairseq-train  \

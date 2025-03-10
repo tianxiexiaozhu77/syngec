@@ -2,8 +2,8 @@ source activate syngec
 export CUDA_VISIBLE_DEVICES=0
 export CUDA_LAUNCH_BLOCKING=1
 # data_dir=/opt/data/private/friends/tzc/data/iwslt/bin  # raw data
-# data_dir=/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin  # 字典10104 distill data
-data_dir=/opt/data/private/zjx/data/iwslt_de_en_distill/bin  # 字典10152 distill data
+# data_dir=/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin  #
+data_dir=/opt/data/private/zjx/data/iwslt_de_en_distill/bin  # 
 checkpoint_path=/opt/data/private/friends/tzc/checkpoint/iwslt/distill/deen/glat/14/checkpoint_average.pt
 src=de
 tgt=en
@@ -32,7 +32,7 @@ bash /opt/data/private/zjx/SynGEC-main/src/src_syngec/fairseq-0.10.2/scripts/com
 
 # 需要改4个地方
 # 1. checkpoint_path指定的路径
-# 2. --iter-decode-with-beam 3
+# 2. --iter-decode-with-beam 5
 # 3. --task translation_lev_modified
 # 4. 激活哪个环境source activate syngec
 # 5.迭代强化生成

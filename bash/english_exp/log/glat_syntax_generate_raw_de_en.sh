@@ -2,8 +2,8 @@ source activate syngec
 export CUDA_VISIBLE_DEVICES=0
 export CUDA_LAUNCH_BLOCKING=1
 # data_dir=/opt/data/private/friends/tzc/data/iwslt_de/iwslt_de/bin
-# data_dir=/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin  # 字典10104 distill data
-data_dir=/opt/data/private/zjx/data/iwslt_de/iwslt_de/bin  # 字典10152 distill data
+# data_dir=/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin  # 
+data_dir=/opt/data/private/zjx/data/iwslt_de/iwslt_de/bin  # 
 checkpoint_path=/opt/data/private/friends/tzc/checkpoint/iwslt/raw/deen/glat_syntax/nat33/checkpoint_average.pt
 src=de
 tgt=en

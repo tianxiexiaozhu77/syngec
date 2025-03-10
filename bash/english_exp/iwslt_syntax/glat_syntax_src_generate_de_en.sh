@@ -2,8 +2,8 @@ source activate syndecoder
 export CUDA_VISIBLE_DEVICES=0
 # export CUDA_LAUNCH_BLOCKING=1
 # data_dir=/opt/data/private/friends/tzc/data/iwslt_de/iwslt_de/bin
-# data_dir=/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin  # 字典10104 distill data
-data_dir=/opt/data/private/zjx/data/fairseq_iwslt14.tokenized.distil.de-en/bin  # 字典10152 distill data
+# data_dir=/opt/data/private/friends/tzc/data/iwslt_distill/iwslt_de/bin  # 
+data_dir=/opt/data/private/zjx/data/fairseq_iwslt14.tokenized.distil.de-en/bin  # 
 checkpoint_path=/opt/data/private/zjx/ckpt/iwslt_distill_de_en_syntax/6/checkpoint_ave.pt
 src=de
 tgt=en
