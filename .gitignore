@@ -225,3 +225,7 @@ bash/english_exp/average_checkpoint.sh
 bash/english_exp/bart/
 bash/english_exp/generate_syngec_bart.sh
 bash/english_exp/generate_syngec_transformer.sh
+/opt/data/private/zjx/data/syngec/LICENSE
+/opt/data/private/zjx/data/syngec/README.md
+LICENSE
+README.md
