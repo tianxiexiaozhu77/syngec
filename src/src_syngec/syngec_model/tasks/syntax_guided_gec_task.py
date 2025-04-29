@@ -31,7 +31,7 @@ from fairseq.data import (
 from fairseq.tasks.translation import TranslationTask  # 无
 from fairseq.tasks import register_task  # 无
 from collections import defaultdict  # 无
-import torchsnooper
+# import torchsnooper
 EVAL_BLEU_ORDER = 4
 
 
@@ -43,7 +43,7 @@ Yue Zhang
 2021.12.26
 读取含有句法的句对数据集
 """
-@torchsnooper.snoop()
+# @torchsnooper.snoop()
 def load_langpair_dataset(
     data_path,
     split,

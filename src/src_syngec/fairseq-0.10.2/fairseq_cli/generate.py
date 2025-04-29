@@ -196,7 +196,26 @@ def _main(args, output_file):
             constraints = sample["constraints"]
 
         gen_timer.start()
-
+        # if "wir sprechen nicht gerne über unsere geschichte ." == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+            # print()
+        # if "und jeder in diesem raum muss hinein ." == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+        #     print()
+        # if "mit welchen worten würden sie ban beschreiben ?" == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+        #     print()
+        # if "zwei minuten später passi@@ erten drei dinge gleichzeitig ." == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+        #     print()  # 这样找不到 需要去掉pbe
+        # if "zwei minuten später passierten drei dinge gleichzeitig ." == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+        #     print()
+        # if "daher möchte ich , dass sie über ein gedankenexperiment nachdenken ." == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+        #     print()
+        # if "das einzige land der welt ." == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+        #     print()
+        # if "und dann passierte es wieder ." == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+        #     print()
+        # if "sie tat es drei jahre lang ," == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+        #     print()
+        if "ich wollte uns gesund halten ." == src_dict.string(utils.strip_pad(sample["net_input"]["src_tokens"][0, :], tgt_dict.pad()), args.remove_bpe):
+            print()
         hypos = task.inference_step(
             generator,
             models,
@@ -232,7 +251,7 @@ def _main(args, output_file):
                 )
             else:
                 if src_dict is not None:
-                    src_str = src_dict.string(src_tokens, args.remove_bpe)
+                    src_str = src_dict.string(src_tokens, args.remove_bpe)  
                 else:
                     src_str = ""
                 if has_target:

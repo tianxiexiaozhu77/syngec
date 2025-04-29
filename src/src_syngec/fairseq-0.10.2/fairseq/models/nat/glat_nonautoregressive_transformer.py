@@ -253,7 +253,7 @@ class NATransformerDecoder(FairseqNATDecoder):
         # entropy = -torch.sum(probs * log_probs, dim=-1)
         # data = {}
         # data['entropy'] = entropy.tolist()
-        # with open('/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_2_iwslt_ablation/entopy_distill_glat.json', 'w') as f:
+        # with open('/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_2_iwslt_ablation/entopy_glat_zwei_minuten.json', 'w') as f:
         #     json.dump(data, f, indent=4)
 
 

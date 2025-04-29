@@ -270,14 +270,14 @@ class SyntaxGlatNATransformerDecoder(SyntaxFairseqNATDecoder):
         decoder_out = self.output_layer(features)
         return F.log_softmax(decoder_out, -1) if normalize else decoder_out
     
-        # import json
-        # log_probs = F.log_softmax(decoder_out, -1)
-        # probs = torch.exp(log_probs) 
-        # entropy = -torch.sum(probs * log_probs, dim=-1)
-        # data = {}
-        # data['entropy'] = entropy.tolist()
-        # with open('/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_2_iwslt_ablation/entopy_distill_glat.json', 'w') as f:
-        #     json.dump(data, f, indent=4)
+        import json
+        log_probs = F.log_softmax(decoder_out, -1)
+        probs = torch.exp(log_probs) 
+        entropy = -torch.sum(probs * log_probs, dim=-1)
+        data = {}
+        data['entropy'] = entropy.tolist()
+        with open('/opt/data/private/zjx/data/syngec/bash/english_exp/distill_iwslt_2_iwslt_ablation/new_data_dot_product_entropy/syn_glat_entopy_ich_wollte_uns_gesund_halten.json', 'w') as f:
+            json.dump(data, f, indent=4)
 
     @ensemble_decoder
     def forward_length(self, normalize, encoder_out):
